@@ -3,6 +3,7 @@ import "./globals.css";
 export const metadata = {
   title: "Seo3Kyung App",
   description: "App-like Web UI",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
