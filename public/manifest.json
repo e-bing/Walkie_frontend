@@ -1,8 +1,11 @@
 {
   "name": "Seo3Kyung App",
   "short_name": "SeoApp",
+  "description": "Seo3Kyung PWA 테스트 앱입니다",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#1e40af",
   "icons": [
