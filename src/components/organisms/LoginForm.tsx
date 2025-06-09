@@ -1,11 +1,11 @@
 // Molecules와 Atoms를 조합해 기능 단위를 이룬 컴포넌트
-import React, { useState } from "react";
-import FormField from "../molecules/FormField";
-import Button from "@/components/atmos/button/index";
+import React, { useState } from 'react';
+import FormField from '../molecules/FormField';
+import Button from '@/components/atoms/button/index';
 
 const LoginForm: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,10 +14,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="w-full max-w-sm mx-auto text-blue-600"
-    >
+    <form onSubmit={handleSubmit} className="w-full max-w-sm mx-auto text-blue-600">
       <FormField
         label="Email"
         id="email"

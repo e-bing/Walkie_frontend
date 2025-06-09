@@ -1,6 +1,6 @@
 // Atoms를 조합한 컴포넌트
-import React from "react";
-import InputField from "@/components/atmos/input/index";
+import React from 'react';
+import InputField from '@/components/atoms/input/index';
 
 interface FormFieldProps {
   label: string;
@@ -10,13 +10,7 @@ interface FormFieldProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormField: React.FC<FormFieldProps> = ({
-  label,
-  id,
-  type,
-  value,
-  onChange,
-}) => {
+const FormField: React.FC<FormFieldProps> = ({ label, id, type, value, onChange }) => {
   return (
     <div className="mb-4">
       <label htmlFor={id} className="block mb-1 font-medium">
