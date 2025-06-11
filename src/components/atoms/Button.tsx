@@ -1,10 +1,10 @@
-// 가장 작은 단위의 UI 요소
-import React from "react";
+// 가장 작은 단위의 UI 요소  ( 변경 해야함 )
+import React from 'react';
 
 interface ButtonProps {
   onClick?: () => void;
   children: React.ReactNode;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
