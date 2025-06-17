@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import ProfileScreen from '@/components/templates/ProfileScreen';
 
 const ProfilePage: React.FC = () => {
-  return <div>ProfilePage</div>;
+  return <ProfileScreen />;
 };
 
 export default ProfilePage;
