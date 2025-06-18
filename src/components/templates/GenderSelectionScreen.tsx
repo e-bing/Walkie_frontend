@@ -17,51 +17,44 @@ const GenderSelectionScreen: React.FC = () => {
   const router = useRouter();
 
   const handleNext = () => {
-    // TODO: 선택값 저장 로직 추가예정
     router.push('/signup/birthyear');
   };
 
   return (
-    <div
-      className="
-        flex flex-col items-center
-        min-h-screen overflow-y-auto
-        px-[1.5rem] pt-[5.75rem]
-        pb-[env(safe-area-inset-bottom)]
-      "
-    >
-      {/* 1) 스텝 */}
-      <StepIndicator current={2} total={4} />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white px-4 sm:px-6">
+      {/* 메인 컨텐츠 */}
+      <div className="flex-1 w-full max-w-[15rem] flex flex-col items-center pt-28 sm:pt-32 overflow-y-auto pb-8">
+        {/* 스텝 인디케이터 */}
+        <div className="mb-4 sm:mb-6">
+          <StepIndicator current={2} total={4} />
+        </div>
 
-      {/* 타이틀 */}
-      <h2
-        className="
-          mt-[3.5rem] text-xl font-semibold
-          text-center mb-[1.3rem] text-black
-        "
-      >
-        성별을 입력해주세요!
-      </h2>
+        {/* 타이틀 */}
+        <h2 className="mt-4 sm:mt-6 text-xl sm:text-2xl font-semibold text-center text-black mb-6 sm:mb-8">
+          성별을 입력해주세요!
+        </h2>
 
-      <div className="flex flex-col items-center space-y-[1.75rem] mt-[1rem]">
-        {GENDERS.map(({ value, label }) => (
-          <OptionButton
-            key={value}
-            label={label}
-            selected={selected === value}
-            onClick={() => setSelected(value)}
-          />
-        ))}
+        {/* 옵션 리스트: 화면 크기에 따라 간격 조절 */}
+        <div className="w-full flex flex-col items-center space-y-4 sm:space-y-5 md:space-y-6">
+          {GENDERS.map(({ value, label }) => (
+            <OptionButton
+              key={value}
+              label={label}
+              selected={selected === value}
+              onClick={() => setSelected(value)}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* 다음 버튼 */}
-      <div className="w-full flex justify-center mt-[13rem] mb-[1rem]">
+      {/* 하단 고정 버튼 */}
+      <div className="w-full sticky bottom-0 bg-white py-6 sm:py-8 px-4 sm:px-6">
         <Button
           onClick={handleNext}
           disabled={!selected}
           variant={selected ? 'primary' : 'secondary'}
           size="lg"
-          className="text-white w-[15rem]"
+          className="w-full text-white"
         >
           다음
         </Button>

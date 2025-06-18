@@ -1,4 +1,3 @@
-// src/app/signup/gender/components/OptionButton.tsx
 'use client';
 
 import React from 'react';
@@ -15,16 +14,13 @@ const OptionButton: React.FC<OptionButtonProps> = ({ label, selected, onClick })
       type="button"
       onClick={onClick}
       className={`
-        inline-block
-        h-[3.5rem]
-        px-[5.7rem]
-        min-w-[12rem]
-        rounded-lg
-        border
-        bg-white
-        text-base
-        font-medium
-        transition
+        w-full
+        rounded-lg border bg-white
+        text-base font-medium transition
+        /* 모바일: 상하 0.75rem, 좌우 1rem */
+        px-4 py-3
+        /* sm 이상: 상하 1rem, 좌우 1.5rem */
+        sm:px-6 sm:py-4
         ${
           selected
             ? 'border-[#2750E0] text-[#2750E0]'
