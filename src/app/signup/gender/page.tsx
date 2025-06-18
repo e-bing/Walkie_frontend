@@ -1,9 +1,5 @@
-'use client';
+import GenderSelectionScreen from '@/components/templates/GenderSelectionScreen';
 
-import React from 'react';
-
-const GenderPage: React.FC = () => {
-  return <div>GenderPage</div>;
-};
-
-export default GenderPage;
+export default function Page() {
+  return <GenderSelectionScreen />;
+}
