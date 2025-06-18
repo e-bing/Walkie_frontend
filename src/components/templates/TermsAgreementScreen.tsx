@@ -15,7 +15,7 @@ const TermsAgreementScreen: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col min-h-screen bg-neutral-0 px-4 sm:px-6 lg:px-8">
       {/* 스크롤 가능한 메인 영역 */}
       <div className="flex-1 overflow-y-auto pt-10 sm:pt-12">
         {/* 로고 */}
@@ -29,7 +29,7 @@ const TermsAgreementScreen: React.FC = () => {
         </div>
 
         {/* 안내 텍스트 */}
-        <div className="text-xl sm:text-2xl font-semibold text-center text-black mb-12 sm:mb-16">
+        <div className="text-xl sm:text-2xl font-semibold text-center text-neutral-1100 mb-12 sm:mb-16">
           워키 이용을 위해
           <br />
           약관에 동의해주세요
@@ -42,7 +42,7 @@ const TermsAgreementScreen: React.FC = () => {
       </div>
 
       {/* 하단 고정 버튼 */}
-      <div className="sticky bottom-0 bg-white px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <div className="sticky bottom-0 bg-neutral-0 px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="max-w-sm mx-auto">
           <Button
             onClick={handleNext}

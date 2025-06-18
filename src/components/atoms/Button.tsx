@@ -46,7 +46,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       className={`
         w-full inline-flex items-center justify-center
-        font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2
+        font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2
         ${variantClasses[variant]} ${sizeClasses[size]}
         ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
         ${className}

@@ -15,7 +15,7 @@ const OptionButton: React.FC<OptionButtonProps> = ({ label, selected, onClick })
       onClick={onClick}
       className={`
         w-full
-        rounded-lg border bg-white
+        rounded-full border bg-neutral-0
         text-base font-medium transition
         /* 모바일: 상하 0.75rem, 좌우 1rem */
         px-4 py-3
@@ -23,8 +23,8 @@ const OptionButton: React.FC<OptionButtonProps> = ({ label, selected, onClick })
         sm:px-6 sm:py-4
         ${
           selected
-            ? 'border-[#2750E0] text-[#2750E0]'
-            : 'border-gray-300 text-black hover:bg-gray-50'
+            ? 'border-blue-500 text-blue-500'
+            : 'border-neutral-200 text-neutral-1100 hover:bg-neutral-50'
         }
       `}
     >

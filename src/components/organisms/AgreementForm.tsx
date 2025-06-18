@@ -37,7 +37,7 @@ const AgreementForm = ({ onAllChecked }: AgreementFormProps) => {
   };
 
   return (
-    <div className="mt-8 border-t border-gray-300 pt-4 space-y-2">
+    <div className="mt-8 border-t border-neutral-200 pt-4 space-y-2">
       <AgreementItem checked={all} label="전체동의" onToggle={toggleAll} />
       <AgreementItem
         checked={age}
