@@ -15,7 +15,7 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({ current, total }) => {
           key={step}
           className={`
             block w-3 h-3 rounded-full
-            ${step === current ? 'bg-[#2750E0]' : 'bg-[#D9D9D9]'}
+            ${step === current ? 'bg-blue-500' : 'bg-neutral-200'}
             `}
         />
       ))}

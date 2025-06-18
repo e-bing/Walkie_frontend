@@ -11,7 +11,7 @@ const AgreementCheckbox = ({ checked, onChange }: AgreementCheckboxProps) => {
       <span
         onClick={onChange}
         className={`w-5 h-5 flex items-center justify-center rounded-md border cursor-pointer
-          ${checked ? 'bg-[#2C4EFF] border-[#2C4EFF]' : 'bg-white border-gray-300'}`}
+          ${checked ? 'bg-blue-500 border-blue-500' : 'bg-neutral-0 border-neutral-200'}`}
       >
         {checked && (
           <svg

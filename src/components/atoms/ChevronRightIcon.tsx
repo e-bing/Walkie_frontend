@@ -7,7 +7,7 @@ const ChevronRightIcon = () => (
     alt="화살표"
     width={10}
     height={10}
-    className="text-gray-400"
+    className="text-neutral-500"
   />
 );
 

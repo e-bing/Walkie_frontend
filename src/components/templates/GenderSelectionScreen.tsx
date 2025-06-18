@@ -9,7 +9,6 @@ import Button from '@/components/atoms/Button';
 const GENDERS = [
   { value: 'male', label: '남성' },
   { value: 'female', label: '여성' },
-  { value: 'none', label: '비공개' },
 ] as const;
 
 const GenderSelectionScreen: React.FC = () => {
@@ -21,7 +20,7 @@ const GenderSelectionScreen: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white px-4 sm:px-6">
+    <div className="flex flex-col items-center justify-center min-h-screen  px-4 sm:px-6">
       {/* 메인 컨텐츠 */}
       <div className="flex-1 w-full max-w-[15rem] flex flex-col items-center pt-28 sm:pt-32 overflow-y-auto pb-8">
         {/* 스텝 인디케이터 */}
@@ -30,7 +29,7 @@ const GenderSelectionScreen: React.FC = () => {
         </div>
 
         {/* 타이틀 */}
-        <h2 className="mt-4 sm:mt-6 text-xl sm:text-2xl font-semibold text-center text-black mb-6 sm:mb-8">
+        <h2 className="mt-4 sm:mt-6 text-xl sm:text-2xl font-semibold text-center text-neutral-1100 mb-6 sm:mb-8">
           성별을 입력해주세요!
         </h2>
 
