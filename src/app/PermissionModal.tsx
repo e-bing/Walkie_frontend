@@ -14,12 +14,13 @@ const PermissionModal: React.FC<PermissionModalProps> = ({ onGranted }) => {
   const [, setLocationGranted] = useState(false);
 
   useEffect(() => {
-    // 모달 표시
+    // 모달이 열릴 때 위치 권한 요청 단계로 초기화
+    setStep(1);
   }, []);
 
   const handleAllow = () => {
     if (step === 1) {
-      // 위치 요청
+      // 위치 권한 요청
       setRequesting(true);
       if (!navigator.geolocation) {
         alert('위치 정보를 지원하지 않습니다.');
@@ -30,50 +31,53 @@ const PermissionModal: React.FC<PermissionModalProps> = ({ onGranted }) => {
         () => {
           setRequesting(false);
           setLocationGranted(true);
-          setStep(2); // 다음 단계로
+          setStep(2);
         },
         () => {
           setRequesting(false);
-          alert('위치 권한이 거부되었습니다. 앱 사용 불가');
+          alert('위치 권한이 거부되었습니다. 앱 사용이 불가합니다.');
           window.location.href = 'about:blank';
         },
         { enableHighAccuracy: true },
       );
     } else {
       // 건강 앱 연동 단계
-      // Android 인텐트 호출
+      setRequesting(true);
       const intentUrl =
         'intent://com.google.android.apps.fitness#Intent;scheme=googlefit;package=com.google.android.apps.fitness;end';
       window.location.href = intentUrl;
-      // 시뮬레이션
+      // 간단 시뮬레이션: 실제 연동 완료 후 onGranted 호출
       setTimeout(() => {
+        setRequesting(false);
         onGranted();
       }, 1000);
     }
   };
 
   const handleReject = () => {
-    // 거절 시 앱 종료
-    alert('권한 거부 시 앱 사용이 불가합니다. 앱을 종료합니다.');
+    alert('모든 권한을 허용해야 앱을 사용할 수 있습니다. 앱을 종료합니다.');
     window.location.href = 'about:blank';
   };
 
-  // 단계별 문구
+  // 단계별 텍스트
   const title = step === 1 ? '위치 권한 요청' : '건강 앱 연동 요청';
   const description =
     step === 1
       ? '앱 기능 사용을 위해 위치 권한을 허용해주세요.'
       : '원활한 건강 데이터 사용을 위해 건강 앱을 연동해주세요.';
-  const allowLabel = step === 1 ? '허용' : '허용';
+  const allowLabel = step === 1 ? '위치 허용' : '연동 허용';
 
   return (
-    <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-11/12 max-w-xs text-center border border-black">
         <h2 className="text-lg font-semibold mb-2 text-black">{title}</h2>
-        <p className="text-sm text-gray-600 mb-6">{description}</p>
-
+        <p className="text-sm  mb-6 text-black">{description}</p>
         <div className="flex justify-center space-x-4">
-          <button onClick={handleReject} className="px-4 py-2 bg-gray-200 text-gray-700 rounded">
+          <button
+            onClick={handleReject}
+            disabled={requesting}
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded"
+          >
             거절
           </button>
           <button
