@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import NicknameInputWithButton from '../molecules/NicknameInputWithButton';
 import ValidationMessages from '../molecules/ValidationMessages';
-
-const BAD_WORDS = ['fuck', 'shit', '씨발', '시발', 'ㅅㅂ', '병신', '미친'];
-
-function containsBadWord(nickname: string) {
-  return BAD_WORDS.some((word) => nickname.includes(word));
-}
+import { getNicknameValidationErrors } from '@/utils/nicknameValidation';
 
 interface NicknameCheckFormProps {
   onVerify?: (verified: boolean) => void;
@@ -20,41 +15,27 @@ const NicknameCheckForm: React.FC<NicknameCheckFormProps> = ({ onVerify }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
-    if (value.length > 12) value = value.slice(0, 12);
+    if (value.length > 12) {
+      value = value.slice(0, 12);
+    }
     setNickname(value);
 
-    const errors: string[] = [];
-    if (!/^[a-zA-Z0-9가-힣]+$/.test(value)) {
-      errors.push('한글, 영문, 숫자 조합으로 입력해주세요.');
-    }
-    if (containsBadWord(value)) {
-      errors.push('부적절한 단어가 포함되어 있습니다.');
-    }
-
+    const errors = getNicknameValidationErrors(value);
     if (errors.length > 0) {
       setStatus('error');
       setMessages(errors);
       onVerify?.(false);
-    } else {
-      setStatus('default');
-      setMessages([]);
-      onVerify?.(false); // 중복확인 전이므로 false
+      return;
     }
+
+    setStatus('default');
+    setMessages([]);
+    onVerify?.(false);
   };
 
   const handleCheck = async () => {
-    const value = nickname.trim();
-    const errors: string[] = [];
-
-    if (!/^[a-zA-Z0-9가-힣]+$/.test(value)) {
-      errors.push('한글, 영문, 숫자 조합으로 입력해주세요.');
-    }
-    if (value.length < 2 || value.length > 12) {
-      errors.push('2자 이상 12자 이하로 입력해주세요.');
-    }
-    if (containsBadWord(value)) {
-      errors.push('부적절한 단어가 포함되어 있습니다.');
-    }
+    const trimmed = nickname.trim();
+    const errors = getNicknameValidationErrors(trimmed);
 
     if (errors.length > 0) {
       setStatus('error');
@@ -68,7 +49,7 @@ const NicknameCheckForm: React.FC<NicknameCheckFormProps> = ({ onVerify }) => {
     setMessages([]);
 
     try {
-      const isAvailable = await checkNicknameAPI(value);
+      const isAvailable = await checkNicknameAPI(trimmed);
       if (isAvailable) {
         setStatus('success');
         setMessages(['사용 가능한 닉네임입니다.']);
