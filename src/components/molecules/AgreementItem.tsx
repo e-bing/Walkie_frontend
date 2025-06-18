@@ -21,7 +21,7 @@ const AgreementItem = ({
     <div className="flex items-center justify-between py-2">
       <div className="flex items-center gap-3">
         <AgreementCheckbox checked={checked} onChange={() => onToggle(!checked)} />
-        <span className="text-sm font-medium text-neutral-1100">{`${
+        <span className="text-sm font-medium text-black">{`${
           required ? '[필수] ' : ''
         }${label}`}</span>
       </div>

@@ -24,7 +24,7 @@ const OptionButton: React.FC<OptionButtonProps> = ({ label, selected, onClick })
         ${
           selected
             ? 'border-blue-500 text-blue-500'
-            : 'border-neutral-200 text-neutral-1100 hover:bg-neutral-50'
+            : 'border-neutral-200 text-black hover:bg-neutral-50'
         }
       `}
     >

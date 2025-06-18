@@ -29,7 +29,7 @@ const GenderSelectionScreen: React.FC = () => {
         </div>
 
         {/* 타이틀 */}
-        <h2 className="mt-4 sm:mt-6 text-xl sm:text-2xl font-semibold text-center text-neutral-1100 mb-6 sm:mb-8">
+        <h2 className="mt-4 sm:mt-6 text-xl sm:text-2xl font-semibold text-center text-black mb-6 sm:mb-8">
           성별을 입력해주세요!
         </h2>
 

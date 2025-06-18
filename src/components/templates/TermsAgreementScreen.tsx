@@ -29,7 +29,7 @@ const TermsAgreementScreen: React.FC = () => {
         </div>
 
         {/* 안내 텍스트 */}
-        <div className="text-xl sm:text-2xl font-semibold text-center text-neutral-1100 mb-12 sm:mb-16">
+        <div className="text-xl sm:text-2xl font-semibold text-center text-black mb-12 sm:mb-16">
           워키 이용을 위해
           <br />
           약관에 동의해주세요
