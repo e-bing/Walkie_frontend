@@ -15,7 +15,7 @@ const ProfileImage: React.FC<ProfileImageProps> = ({
   className = '',
 }) => (
   <div
-    className={`relative overflow-hidden rounded-full border-2 border-gray-200 shadow ${className}`}
+    className={`relative overflow-hidden rounded-full ${className}`}
     style={{ width: size, height: size }}
   >
     <Image src={src} alt={alt} fill style={{ objectFit: 'cover' }} sizes={`${size}px`} />

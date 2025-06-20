@@ -80,6 +80,44 @@
   --font-mono: var(--font-mono);
 }
 
+@theme {
+  /* blue */
+  --color-blue-800: #03238f;
+  --color-blue-700: #1334a6;
+  --color-blue-600: #2348ca;
+  --color-blue-500: #2750e0;
+  --color-blue-400: #5273e6;
+  --color-blue-300: #7d96ec;
+  --color-blue-200: #a9b9f3;
+  --color-blue-100: #d4dcf9;
+  --color-blue-50: #f4f6fd;
+
+  /* neutral */
+  --color-neutral-1100: #000000;
+  --color-neutral-1000: #17191a;
+  --color-neutral-900: #2f3133;
+  --color-neutral-800: #464a4d;
+  --color-neutral-700: #5e6366;
+  --color-neutral-600: #757b80;
+  --color-neutral-500: #8c9499;
+  --color-neutral-400: #a4adb2;
+  --color-neutral-300: #bbc5cc;
+  --color-neutral-200: #e8eef2;
+  --color-neutral-100: #f2f8fc;
+  --color-neutral-0: #ffffff;
+
+  /* semantic */
+  --color-semantic-success: #6ed510;
+  --color-semantic-warning: #ffb948;
+  --color-semantic-error: #fb1d1d;
+  --color-semantic-info: #7d96ec;
+
+  /* brand */
+  --color-brand-primary: #2750e0;
+  --color-brand-secondary1: #b7e58d;
+  --color-brand-secondary2: #7d96ec;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;
