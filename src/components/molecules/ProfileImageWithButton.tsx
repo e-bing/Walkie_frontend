@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileImage from '../atoms/ProfileImage';
-import IconPlus from '../atoms/IconPlus';
+import CameraIcon from '../atoms/CameraIcon';
 
 interface ProfileImageWithButtonProps {
   src?: string;
@@ -11,7 +11,7 @@ interface ProfileImageWithButtonProps {
 }
 
 const ProfileImageWithButton: React.FC<ProfileImageWithButtonProps> = ({
-  src = '/icons/walkie-logo-character.svg',
+  src = '/icons/profile-default.svg',
   alt = '프로필 이미지',
   onButtonClick,
   imageSize = 112,
@@ -22,7 +22,7 @@ const ProfileImageWithButton: React.FC<ProfileImageWithButtonProps> = ({
     <button
       type="button"
       onClick={onButtonClick}
-      className="absolute right-0 bottom-0 flex items-center justify-center rounded-full bg-white border border-gray-300 shadow"
+      className="absolute right-0 bottom-0 flex items-center justify-center rounded-full shadow"
       style={{
         width: buttonSize,
         height: buttonSize,
@@ -31,7 +31,7 @@ const ProfileImageWithButton: React.FC<ProfileImageWithButtonProps> = ({
       }}
       aria-label="프로필 이미지 변경"
     >
-      <IconPlus size={buttonSize * 0.55} color="#888" />
+      <CameraIcon size={buttonSize} />
     </button>
   </div>
 );

@@ -7,9 +7,9 @@ interface ValidationMessageProps {
 }
 
 const colorMap = {
-  default: 'text-[#D9D9D9]',
-  success: 'text-[#2750E0]',
-  error: 'text-[#FB1D1D]',
+  default: 'text-neutral-600',
+  success: 'text-brand-primary',
+  error: 'text-semantic-error',
 };
 
 const ValidationMessage: React.FC<ValidationMessageProps> = ({ messages, status }) => (

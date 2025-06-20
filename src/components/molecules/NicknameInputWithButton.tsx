@@ -11,9 +11,9 @@ interface NicknameInputWithButtonProps {
 }
 
 const underlineColorMap = {
-  default: 'border-[#D9D9D9]',
-  success: 'border-[#2750E0]',
-  error: 'border-[#FB1D1D]',
+  default: 'border-neutral-300',
+  success: 'border-brand-primary',
+  error: 'border-semantic-error',
 };
 
 const NicknameInputWithButton: React.FC<NicknameInputWithButtonProps> = ({
@@ -41,7 +41,7 @@ const NicknameInputWithButton: React.FC<NicknameInputWithButtonProps> = ({
           size="sm"
           radius="full"
           type="button"
-          className="ml-2 text-xs border border-[#ABABAB] text-[#686868] font-normal shadow-none whitespace-nowrap
+          className="ml-2 text-xs border border-neutral-400 text-neutral-600 font-normal shadow-none whitespace-nowrap
           py-1"
         >
           {isChecking ? '확인 중' : '중복확인'}
