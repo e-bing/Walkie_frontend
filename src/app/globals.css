@@ -73,14 +73,14 @@
   --font-mono: 'Courier New', monospace;
 }
 
-@theme inline {
+@theme {
+  /* 기존 @theme inline에 있던 코드 이동 */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-}
 
-@theme {
+  /* 커스텀 컬러 설정 */
   /* blue */
   --color-blue-800: #03238f;
   --color-blue-700: #1334a6;
@@ -130,4 +130,54 @@ body {
   background: var(--background);
   color: #000000;
   font-family: var(--font-sans);
+}
+
+/* 4. 폰트 커스텀 클래스 */
+@layer components {
+  .headlineL {
+    @apply font-sans font-bold text-[36px] leading-[125%];
+  }
+  .headlineM {
+    @apply font-sans font-bold text-[32px] leading-[125%];
+  }
+  .headlineS {
+    @apply font-sans font-bold text-[28px] leading-[125%];
+  }
+
+  .title1 {
+    @apply font-sans font-bold text-[24px] leading-[125%];
+  }
+  .title2 {
+    @apply font-sans font-bold text-[20px] leading-[125%];
+  }
+  .title3 {
+    @apply font-sans font-bold text-[18px] leading-[125%];
+  }
+
+  .labelL {
+    @apply font-sans font-bold text-[16px] leading-[24px];
+  }
+  .labelM {
+    @apply font-sans font-bold text-[14px] leading-[20px];
+  }
+  .labelS {
+    @apply font-sans font-bold text-[12px] leading-[24px];
+  }
+
+  .body1 {
+    @apply font-sans text-[16px] leading-[180%];
+  }
+  .body2 {
+    @apply font-sans text-[14px] leading-[180%];
+  }
+
+  .captionL {
+    @apply font-sans text-[16px] leading-[24px];
+  }
+  .captionM {
+    @apply font-sans text-[14px] leading-[20px];
+  }
+  .captionS {
+    @apply font-sans text-[12px] leading-[20px];
+  }
 }
