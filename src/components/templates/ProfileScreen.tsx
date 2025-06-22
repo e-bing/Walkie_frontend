@@ -1,15 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from '@/components/atoms/Button';
 import StepDots from '../molecules/StepDots';
 import { useRouter } from 'next/navigation';
 import NicknameCheckForm from '../organisms/NicknameCheckForm';
 import ProfileImageWithButton from '../molecules/ProfileImageWithButton';
 import BackHeader from '../molecules/BackHeader';
+
+const DEFAULT_PROFILE_IMAGE = '/icons/profile-default.svg';
+
 const ProfileScreen = () => {
   const [isNicknameVerified, setIsNicknameVerified] = useState(false);
+  const [profileImage, setProfileImage] = useState<string>(DEFAULT_PROFILE_IMAGE);
   const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedImage = localStorage.getItem('profileImage');
+      if (storedImage) {
+        setProfileImage(storedImage);
+      } else {
+        setProfileImage(DEFAULT_PROFILE_IMAGE);
+      }
+    }
+  }, []);
 
   const handleBack = () => {
     router.back();
@@ -26,6 +41,7 @@ const ProfileScreen = () => {
         <div className="title1 my-10 text-center">프로필을 완성해주세요!</div>
         <div className="flex justify-center mb-20">
           <ProfileImageWithButton
+            src={profileImage}
             onButtonClick={() => {
               router.push('/signup/profile/image-select');
             }}
