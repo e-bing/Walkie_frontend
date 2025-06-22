@@ -40,14 +40,18 @@ const LocationSearchPage: React.FC = () => {
   const [keyword, setKeyword] = useState('');
   const [locations, setLocations] = useState<{ name: string; id: number }[]>([]);
   const [loading, setLoading] = useState(false);
+  const [searchMode, setSearchMode] = useState<'keyword' | 'current' | null>(null);
 
   useEffect(() => {
     if (!keyword) {
       setLocations([]);
       setLoading(false);
+      setSearchMode(null);
       return;
     }
     setLoading(true);
+    setSearchMode('keyword');
+
     const timeout = setTimeout(() => {
       fetchLocations(keyword).then((res) => {
         setLocations(res);
@@ -58,6 +62,7 @@ const LocationSearchPage: React.FC = () => {
   }, [keyword]);
 
   const handleFindByLocation = useCallback(() => {
+    setSearchMode('current');
     if (!navigator.geolocation) {
       alert('위치 정보 사용이 불가합니다.');
       return;
@@ -96,9 +101,12 @@ const LocationSearchPage: React.FC = () => {
       <CurrentPositionButton onClick={handleFindByLocation} loading={loading} />
 
       <div className="mt-8">
-        {loading && <div className="text-center text-neutral-500">검색 중...</div>}
-        {!loading && <div className="labelL mx-2 mb-3">현재 위치 기반 주소지</div>}
-        {!loading && locations.length === 0 && (
+        {searchMode === 'current' ? (
+          <div className="labelL mx-2 mb-3">현재 위치 기반 주소지</div>
+        ) : searchMode === 'keyword' && keyword ? (
+          <div className="labelL mx-2 mb-3">‘{keyword}’ 검색결과</div>
+        ) : null}
+        {!loading && locations.length === 0 && keyword && (
           <div className="py-3 px-2 text-neutral-500 body2">검색 결과가 없습니다.</div>
         )}
 
