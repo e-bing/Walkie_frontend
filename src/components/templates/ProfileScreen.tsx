@@ -1,26 +1,29 @@
 'use client';
 
 import { useState } from 'react';
-// import Image from 'next/image';
 import Button from '@/components/atoms/Button';
 import StepDots from '../molecules/StepDots';
 import { useRouter } from 'next/navigation';
 import NicknameCheckForm from '../organisms/NicknameCheckForm';
 import ProfileImageWithButton from '../molecules/ProfileImageWithButton';
+import BackHeader from '../molecules/BackHeader';
 const ProfileScreen = () => {
   const [isNicknameVerified, setIsNicknameVerified] = useState(false);
   const router = useRouter();
 
+  const handleBack = () => {
+    router.back();
+  };
+
   return (
     <div className="flex flex-col max-w-sm mx-auto px-6 pt-25 pb-[env(safe-area-inset-bottom)]">
+      <BackHeader onBack={handleBack} />
       <div className="flex justify-center mt-8 mb-5">
         <StepDots steps={4} current={0} />
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        <div className="text-xl font-semibold leading-snug text-black my-10 text-center">
-          프로필을 완성해주세요!
-        </div>
+        <div className="title1 my-10 text-center">프로필을 완성해주세요!</div>
         <div className="flex justify-center mb-20">
           <ProfileImageWithButton />
         </div>
