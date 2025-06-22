@@ -13,7 +13,7 @@ const colorMap = {
 };
 
 const ValidationMessage: React.FC<ValidationMessageProps> = ({ messages, status }) => (
-  <div className={`mt-3 text-xs ${colorMap[status]}`}>
+  <div className={`mt-3 captionS ${colorMap[status]}`}>
     {messages.map((msg, idx) => (
       <div key={idx} className="py-1 flex items-center gap-2">
         <StepDot active={false} />

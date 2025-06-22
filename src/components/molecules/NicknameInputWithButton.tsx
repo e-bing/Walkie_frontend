@@ -35,13 +35,12 @@ const NicknameInputWithButton: React.FC<NicknameInputWithButtonProps> = ({
       className="w-full !border-none !rounded-none !p-0 bg-transparent focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
       endContent={
         <Button
-          onClick={onCheck}
+          onPress={onCheck}
           disabled={isChecking || disabled || !value}
-          color="primary"
           size="sm"
           radius="full"
           type="button"
-          className="ml-2 text-xs border border-neutral-400 text-neutral-600 font-normal shadow-none whitespace-nowrap
+          className="ml-2 border border-neutral-400 text-neutral-600 text-[12px] text-bold shadow-none whitespace-nowrap
           py-1"
         >
           {isChecking ? '확인 중' : '중복확인'}
