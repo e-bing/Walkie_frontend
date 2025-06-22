@@ -21,6 +21,9 @@ const fetchLocations = async (keyword: string) => {
 
 // 위치 기반 주소 검색 API
 const fetchLocationsByCoords = async (lat: number, lng: number) => {
+  // 미사용 변수 오류 때문에 임시 코드 작성
+  void lat;
+  void lng;
   // return await fetch(`/${API_URL}/locations?lat=${lat}&lng=${lng}`).then(res => res.json());
   return [
     { name: '서울시 강남구 개포동', id: 101 },
@@ -68,7 +71,7 @@ const LocationSearchPage: React.FC = () => {
         });
       },
       (err) => {
-        alert('위치 정보를 가져올 수 없습니다.');
+        alert('위치 정보를 가져올 수 없습니다.' + (err?.message || ''));
         setLoading(false);
       },
     );
