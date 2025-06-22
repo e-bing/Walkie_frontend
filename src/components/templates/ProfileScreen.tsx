@@ -25,7 +25,11 @@ const ProfileScreen = () => {
       <div className="flex-1 overflow-y-auto">
         <div className="title1 my-10 text-center">프로필을 완성해주세요!</div>
         <div className="flex justify-center mb-20">
-          <ProfileImageWithButton />
+          <ProfileImageWithButton
+            onButtonClick={() => {
+              router.push('/signup/profile/image-select');
+            }}
+          />
         </div>
 
         <NicknameCheckForm onVerify={setIsNicknameVerified} />
