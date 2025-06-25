@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import BirthYearTemplate from '@/components/templates/BirthYearTemplate';
 
 const BirthYearPage: React.FC = () => {
-  return <div>BirthYearPage</div>;
+  return <BirthYearTemplate />;
 };
 
 export default BirthYearPage;
