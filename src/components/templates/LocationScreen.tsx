@@ -47,7 +47,7 @@ const LocationScreen: React.FC = () => {
             size="lg"
             className="w-full title2 text-white"
           >
-            다음
+            시작하기
           </Button>
         </div>
       </div>
