@@ -4,19 +4,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import SearchHeader from './components/SearchHeader';
 import CurrentPositionButton from './components/CurrentPositionButton';
+import { seoulDongs } from '@/constants/seoul-dongs';
 
 // 주소 검색 API
 const fetchLocations = async (keyword: string) => {
-  // return await fetch(`/${API_URL}/locations?keyword=${keyword}`).then(res => res.json());
-  // 샘플 데이터
-  return [
-    { name: '서울시 강남구 개포동', id: 101 },
-    { name: '서울시 강남구 논현동', id: 102 },
-    { name: '서울시 강남구 대치동', id: 103 },
-    { name: '서울시 서초구 서초동', id: 104 },
-    { name: '서울시 서초구 잠원동', id: 105 },
-    { name: '서울시 서초구 방배동', id: 106 },
-  ].filter((loc) => loc.name.includes(keyword));
+  if (!keyword) return [];
+  const cleanKeyword = keyword.trim().replace(/동$/, '');
+  return seoulDongs.filter((dong) => dong.name.includes(cleanKeyword));
 };
 
 // 위치 기반 주소 검색 API
