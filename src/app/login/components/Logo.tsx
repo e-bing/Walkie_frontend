@@ -4,7 +4,13 @@ import Image from 'next/image';
 const Logo = () => {
   return (
     <div className="flex justify-center mb-2">
-      <Image src="/icons/logo.svg" alt="WALKIE 로고" className="h-14 w-auto" />
+      <Image
+        src="/icons/logo.svg"
+        alt="WALKIE 로고"
+        width={56}
+        height={56}
+        className="h-14 w-auto"
+      />
     </div>
   );
 };

@@ -28,7 +28,7 @@ const TermsAgreementScreen: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-neutral-0 px-4 sm:px-6 lg:px-8 mt-15">
       <div className="flex-1 overflow-y-auto pt-10 sm:pt-12">
-        <div className="flex justify-left mb-12 sm:mb-16 ml-3">
+        <div className="flex justify-center mb-12 sm:mb-16 ">
           <Image
             src="/icons/walkie-logo-character.svg"
             alt="walkie 캐릭터"
@@ -36,7 +36,7 @@ const TermsAgreementScreen: React.FC = () => {
             height={72}
           />
         </div>
-        <div className="text-xl sm:text-2xl font-semibold text-left text-black mb-12 sm:mb-16 ml-3">
+        <div className="text-xl sm:text-2xl font-semibold text-center text-black mb-12 sm:mb-16">
           워키 이용을 위해
           <br />
           약관에 동의해주세요
