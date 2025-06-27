@@ -53,11 +53,12 @@ const ProfileScreen = () => {
 
       <div className="fixed bottom-20 left-0 w-full bg-white z-50 px-6 pb-[env(safe-area-inset-bottom)]">
         <div className="max-w-sm mx-auto flex justify-center">
-          {/* 임시 버튼 */}
           <Button
             onClick={() => router.push('/signup/gender')}
-            disabled={!isNicknameVerified}
-            variant={isNicknameVerified ? 'primary' : 'secondary'}
+            disabled={!isNicknameVerified || profileImage === DEFAULT_PROFILE_IMAGE}
+            variant={
+              isNicknameVerified && profileImage !== DEFAULT_PROFILE_IMAGE ? 'primary' : 'secondary'
+            }
           >
             다음
           </Button>
