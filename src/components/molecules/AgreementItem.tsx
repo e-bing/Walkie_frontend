@@ -8,6 +8,7 @@ export interface AgreementItemProps {
   required?: boolean;
   showArrow?: boolean;
   onToggle: (newState: boolean) => void;
+  onClickArrow?: () => void;
 }
 
 const AgreementItem = ({
@@ -16,16 +17,20 @@ const AgreementItem = ({
   required,
   showArrow = false,
   onToggle,
+  onClickArrow,
 }: AgreementItemProps) => {
   return (
     <div className="flex items-center justify-between py-2">
       <div className="flex items-center gap-3">
         <AgreementCheckbox checked={checked} onChange={() => onToggle(!checked)} />
-        <span className="text-sm font-medium text-black">{`${
-          required ? '[필수] ' : ''
-        }${label}`}</span>
+        <span className="text-sm font-medium text-black">{`
+          ${required ? '[필수] ' : ''}${label}`}</span>
       </div>
-      {showArrow && <ChevronRightIcon />}
+      {showArrow && (
+        <button type="button" onClick={onClickArrow}>
+          <ChevronRightIcon />
+        </button>
+      )}
     </div>
   );
 };
