@@ -5,9 +5,10 @@ import AgreementItem from '@/components/molecules/AgreementItem';
 
 export interface AgreementFormProps {
   onAllChecked: (checked: boolean) => void;
+  onClickDetail?: (key: string) => void;
 }
 
-const AgreementForm = ({ onAllChecked }: AgreementFormProps) => {
+const AgreementForm = ({ onAllChecked, onClickDetail }: AgreementFormProps) => {
   const [all, setAll] = useState(false);
   const [age, setAge] = useState(false);
   const [terms, setTerms] = useState(false);
@@ -15,13 +16,11 @@ const AgreementForm = ({ onAllChecked }: AgreementFormProps) => {
   const [thirdParty, setThirdParty] = useState(false);
   const [location, setLocation] = useState(false);
 
-  // 개별 체크 변화에 따라 전체동의 상태 자동 계산
   useEffect(() => {
     const nextAll = age && terms && privacy && thirdParty && location;
     setAll(nextAll);
   }, [age, terms, privacy, thirdParty, location]);
 
-  // 전체동의 상태가 바뀔 때마다 부모에 알림
   useEffect(() => {
     onAllChecked(all);
   }, [all, onAllChecked]);
@@ -51,6 +50,7 @@ const AgreementForm = ({ onAllChecked }: AgreementFormProps) => {
         required
         showArrow
         onToggle={() => setTerms((prev) => !prev)}
+        onClickArrow={() => onClickDetail?.('terms')}
       />
       <AgreementItem
         checked={privacy}
@@ -58,6 +58,7 @@ const AgreementForm = ({ onAllChecked }: AgreementFormProps) => {
         required
         showArrow
         onToggle={() => setPrivacy((prev) => !prev)}
+        onClickArrow={() => onClickDetail?.('privacy')}
       />
       <AgreementItem
         checked={thirdParty}
@@ -65,6 +66,7 @@ const AgreementForm = ({ onAllChecked }: AgreementFormProps) => {
         required
         showArrow
         onToggle={() => setThirdParty((prev) => !prev)}
+        onClickArrow={() => onClickDetail?.('thirdParty')}
       />
       <AgreementItem
         checked={location}
@@ -72,6 +74,7 @@ const AgreementForm = ({ onAllChecked }: AgreementFormProps) => {
         required
         showArrow
         onToggle={() => setLocation((prev) => !prev)}
+        onClickArrow={() => onClickDetail?.('location')}
       />
     </div>
   );
