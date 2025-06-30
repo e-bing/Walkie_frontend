@@ -2,12 +2,11 @@
 
 import React from 'react';
 import SocialButton from '@/app/login/components/SocialButton';
-
-const API = process.env.NEXT_PUBLIC_API_URL!;
+import { API_URL } from '@/constants/api';
 
 const SocialLoginButtons = () => {
   const handleLogin = (provider: 'kakao' | 'naver' | 'google') => {
-    window.location.href = `${API}/oauth2/authorization/${provider}`;
+    window.location.href = `${API_URL}/oauth2/authorization/${provider}`;
   };
 
   return (
