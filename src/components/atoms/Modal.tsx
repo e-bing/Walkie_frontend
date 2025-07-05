@@ -11,6 +11,7 @@ interface BottomSheetModalProps {
   confirmText?: string;
   onConfirm?: () => void;
   height?: string;
+  hideFooter?: boolean;
 }
 
 const BottomSheetModal = ({
@@ -21,6 +22,7 @@ const BottomSheetModal = ({
   confirmText = '확인',
   onConfirm,
   height = '50dvh',
+  hideFooter = false,
 }: BottomSheetModalProps) => {
   return (
     <Modal
@@ -54,15 +56,17 @@ const BottomSheetModal = ({
               {children}
             </ModalBody>
 
-            {/* 확인 버튼 */}
-            <ModalFooter className="p-0 mt-4">
-              <button
-                onClick={onConfirm ?? onClose}
-                className="w-full  text-black border border-neutral-300 py-3 rounded-full"
-              >
-                {confirmText}
-              </button>
-            </ModalFooter>
+            {/* 확인 버튼 (조건부 렌더링) */}
+            {!hideFooter && (
+              <ModalFooter className="p-0 mt-4">
+                <button
+                  onClick={onConfirm ?? onClose}
+                  className="w-full text-black border border-neutral-300 py-3 rounded-full"
+                >
+                  {confirmText}
+                </button>
+              </ModalFooter>
+            )}
           </div>
         )}
       </ModalContent>
