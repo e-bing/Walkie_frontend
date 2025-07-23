@@ -7,7 +7,12 @@ interface CameraIconProps {
 }
 
 const CameraIcon: React.FC<CameraIconProps> = ({ size }) => (
-  <Image src="/icons/camera-icon.svg" alt="사진 추가 이미지" width={size} height={size} />
+  <span
+    className="inline-block rounded-full border-2 border-neutral-0"
+    style={{ width: size, height: size }}
+  >
+    <Image src="/icons/camera-icon.svg" alt="사진 추가 이미지" width={size} height={size} />
+  </span>
 );
 
 export default CameraIcon;
