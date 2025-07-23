@@ -7,8 +7,6 @@ interface ProfileImageGridProps {
   selectedImage: string | null;
   onSelect: (src: string) => void;
   onUploadClick: () => void;
-  fileInputRef: React.RefObject<HTMLInputElement | null>;
-  onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ProfileImageGrid: React.FC<ProfileImageGridProps> = ({
@@ -16,24 +14,20 @@ const ProfileImageGrid: React.FC<ProfileImageGridProps> = ({
   selectedImage,
   onSelect,
   onUploadClick,
-  fileInputRef,
-  onFileChange,
-}) => (
-  <div className="grid grid-cols-3 gap-4 mb-6">
-    {images.map((src, idx) => (
-      <ProfileImageButton
-        key={src + idx}
-        src={src}
-        selected={selectedImage === src}
-        onSelect={onSelect}
-      />
-    ))}
-    <UploadImageButton
-      onClick={onUploadClick}
-      fileInputRef={fileInputRef}
-      onFileChange={onFileChange}
-    />
-  </div>
-);
+}) => {
+  return (
+    <div className="grid grid-cols-3 gap-4 mb-6">
+      <UploadImageButton onClick={onUploadClick} />
+      {images.map((src, idx) => (
+        <ProfileImageButton
+          key={src + idx}
+          src={src}
+          selected={selectedImage === src}
+          onSelect={onSelect}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default ProfileImageGrid;

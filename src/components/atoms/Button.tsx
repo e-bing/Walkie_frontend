@@ -19,8 +19,8 @@ export interface ButtonProps {
 
 // Tailwind 기본 색상으로 명확한 클래스 지정
 const variantClasses: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary: 'bg-[#2750E0] text-white ',
-  secondary: 'bg-[#D9D9D9] text-white ',
+  primary: 'bg-brand-primary text-white ',
+  secondary: 'bg-neutral-200 text-white ',
   tertiary: 'bg-transparent text-blue-600 ',
 };
 
