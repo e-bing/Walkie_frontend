@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NicknameInputWithButton from '../molecules/NicknameInputWithButton';
 import ValidationMessages from '../molecules/ValidationMessages';
 import { getNicknameValidationErrors } from '@/utils/nicknameValidation';
+import { SWAGGER_API_URL } from '@/constants/api';
 
 interface NicknameCheckFormProps {
   onVerify?: (verified: boolean) => void;
@@ -82,21 +83,29 @@ const NicknameCheckForm: React.FC<NicknameCheckFormProps> = ({ onVerify }) => {
   );
 };
 
-// 임시 API
-async function checkNicknameAPI(nickname: string): Promise<boolean> {
-  await new Promise((r) => setTimeout(r, 700));
-  return nickname !== 'taken'; // 'taken'만 중복 처리
-}
-
+// // 임시 API
 // async function checkNicknameAPI(nickname: string): Promise<boolean> {
-//   const response = await fetch(`${API_URL}/nickname/check`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({ nickname }),
-//   });
-//   if (!response.ok) throw new Error('API 오류');
-//   const data = await response.json();
-//   return data.available;
+//   await new Promise((r) => setTimeout(r, 700));
+//   return nickname !== 'taken'; // 'taken'만 중복 처리
 // }
+
+async function checkNicknameAPI(nickname: string): Promise<boolean> {
+  const url = new URL(`${SWAGGER_API_URL}/members/nickname/available`);
+  url.searchParams.append('nickname', nickname);
+
+  const response = await fetch(url.toString(), {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  const data = await response.json();
+
+  if (response.ok && data.code === '200') {
+    return data.data === true;
+  } else {
+    console.error('API 오류:', data.message, data.data);
+    throw new Error(data.message || 'API 요청 에러');
+  }
+}
 
 export default NicknameCheckForm;
